@@ -1,0 +1,411 @@
+---
+title: " Analyzing Employee Compensation and Benefits"
+output: html_document
+
+---
+***
+
+### Load libraries and Data
+```{r}
+library(tidyverse)
+
+library(ggplot2)
+library(dplyr)
+salary <- readxl::read_xlsx('Data Analytics DataSet.xlsx')
+salary<-salary %>% mutate(compensation = Total-Basic)
+```
+***
+
+
+### The Banks used by our Employees
+```{r}
+banks <- salary %>% 
+  select(Bank) %>% 
+  distinct()
+
+banks
+
+```
+***
+
+### The Total number of Personnels in each department
+```{r}
+dept <- salary %>% 
+  select(Department) %>% 
+  group_by(Department) %>% 
+  mutate(Total =n()) %>%
+  distinct()
+
+dept
+
+```
+```{r}
+dept_graph <- dept %>% ggplot(aes(Department,Total, fill = Department)) + geom_col() + 
+  theme_classic() + 
+  labs(title = "Total Personnel ") + 
+  theme(legend.position = "none") + 
+  geom_text(aes(label = Total), 
+            position = position_stack(vjust = 0.5),
+            color ="black", size = 3) + coord_flip()
+
+dept_graph
+```
+***
+
+### Average Compensation per department
+```{r}
+Compensation_dept <- salary %>% aggregate(compensation~Department, FUN = mean)%>% arrange(compensation) 
+
+Compensation_dept
+
+Compensation_dept_graph <- Compensation_dept %>% ggplot(aes(Department,compensation, fill = Department)) + geom_bar(stat = 'identity')  + 
+  theme_classic() +  ggtitle("Average Compensation per department") + theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
+
+
+
+Compensation_dept_graph
+
+
+
+
+```
+
+
+```{r}
+banks_pay <- salary %>% 
+  aggregate(Total~Bank,
+            FUN = 'mean')
+
+banks_pay
+```
+***
+
+### The Average, Highest and Lowest Total Salaries earned in a department.
+
+```{r}
+
+dept_pay_mean <- salary %>% 
+  aggregate(Total ~ Department,
+            FUN = mean) %>% 
+  arrange(Total) %>% 
+  head(10)
+
+
+dept_pay_mean_graph <- 
+  dept_pay_mean %>%
+  ggplot(aes(Department,
+             Total,
+             fill = Department)) + 
+  geom_bar(stat = 'identity') +
+  scale_y_continuous(labels = scales::comma) + 
+  theme_classic() + 
+ ggtitle("Average Total Salaries in a department") + theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
+
+
+dept_pay_mean_graph
+                                    
+
+
+
+
+dept_pay_max <- salary %>% 
+  aggregate(Total ~ Department,
+            FUN = max) %>% arrange(desc(Total)) %>% head(10)
+
+dept_pay_max
+
+dept_graph_max <- dept_pay_max %>% 
+  ggplot(aes(Department,
+             Total,
+             fill = Department)) + 
+  geom_bar(stat = 'identity') +
+  scale_y_continuous(labels = scales::comma) + 
+  theme_classic() + ggtitle("Highest Total Salaries in a department") + theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
+
+dept_graph_max
+
+
+dept_pay_min <- salary %>% 
+  aggregate(Total ~ Department,
+            FUN = max) %>%
+  arrange(Total) %>% 
+  head(10)
+
+dept_graph_min <- dept_pay_min %>%
+  ggplot(aes(Department,
+             Total,
+             fill = Department)) + 
+  geom_col() + 
+  theme_classic() + 
+  ggtitle("Lowest Total Salaries in a department") +
+  scale_y_continuous(labels = scales::comma) + 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
+
+
+dept_pay_min
+dept_graph_min 
+
+
+
+```
+***
+
+
+### The Average, Highest and Lowest Basic Salaries earned in a department
+```{r}
+dept_basic <- salary %>% 
+  aggregate(Basic~ Department,
+            FUN = mean) %>% 
+  arrange(desc(Basic)) %>% 
+  head(10)
+
+dept_basic
+dept_basic_graph <- dept_basic%>% 
+  ggplot(aes(Department,
+             Basic,
+             fill = Department)) + 
+  geom_col() +
+  scale_y_continuous(labels = scales::comma)  + 
+  theme_classic() + 
+  ggtitle("Average Basic Salaries in a department") + 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
+
+dept_basic_graph
+
+dept_basic_max <- salary %>%
+  aggregate(Basic~ Department,
+            FUN = max) %>% 
+  arrange(desc(Basic)) %>%
+  head(10)
+  
+
+
+dept_basic_max_graph<-dept_basic_max %>% 
+  ggplot(aes(Department,Basic,fill = Department)) + 
+  geom_col() +scale_y_continuous(labels = scales::comma)+ 
+  theme_classic()  + 
+  theme_classic()  + 
+  ggtitle("Highest Basic Salaries in a department") + 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
+
+
+dept_basic_max_graph
+
+
+dept_basic_min <-  salary %>%
+  aggregate(Basic~ Department,
+            FUN = min) %>% 
+  arrange(Basic) %>% 
+  head(10)
+  
+
+
+dept_basic_min
+
+dept_basic_min_graph <- dept_basic_min %>% 
+  ggplot(aes(Department,Basic,fill = Department)) +
+  geom_col() +
+  scale_y_continuous(labels = scales::comma)+ 
+  theme_classic()+  
+  ggtitle("Lowest Basic Salaries in a department") +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
+
+
+dept_basic_min_graph
+
+
+
+t.test(salary$compensation,data = salary)
+```
+***
+
+
+### The Average, Highest and Lowest Basic Salaries earned in their respective Units
+```{r}
+unit_basic_mean <- salary %>% 
+  aggregate(Basic~Unit,FUN = mean) %>%
+  arrange(Basic) %>%
+  head(10)
+
+
+unit_basic_mean
+
+unit_basic_mean_graph <- unit_basic_mean %>% 
+  ggplot(aes(Unit,Basic,fill = Unit)) + 
+  geom_col() + 
+  scale_y_continuous(labels = scales::comma)  + 
+  theme_classic()+ 
+  ggtitle("Average Basic Salaries in a unit") + 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
+
+
+
+unit_basic_mean_graph
+
+unit_basic_max <- salary %>% 
+  aggregate(Basic~Unit,FUN = max) %>% 
+  arrange(desc(Basic)) %>% 
+  head(10)
+
+
+unit_basic_max
+
+unit_basic_max_graph <- unit_basic_max%>% 
+  ggplot(aes(Unit,Basic,fill = Unit)) + 
+  geom_col() +
+  scale_y_continuous(labels = scales::comma)  + 
+  theme_classic() + 
+  ggtitle("Highest Basic Salaries in a unit") + 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
+
+
+unit_basic_max_graph
+
+unit_basic_min  <- salary %>%
+  aggregate(Basic~Unit,FUN = min) %>% 
+  arrange(Basic) %>% head(10)
+ 
+
+unit_basic_min
+
+ 
+ unit_basic_min_graph <- unit_basic_min%>%
+   ggplot(aes(Unit,Basic,fill = Unit)) + 
+   geom_col() +scale_y_continuous(labels = scales::comma)  + 
+   theme_classic() + 
+   ggtitle("Lowest Basic Salaries in a unit") + 
+   theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
+
+
+ unit_basic_min_graph
+```
+***
+
+
+### The Average, Highest and Lowest Total Salaries earned in their Units
+```{r}
+unit_total_mean <- salary %>% 
+  aggregate(Total~Unit,FUN = mean) %>% 
+  arrange(Total) %>% 
+  head(10)
+
+unit_total_mean
+
+unit_total_mean_graph <- unit_total_mean %>% 
+  ggplot(aes(Unit,Total,fill = Unit)) + 
+  geom_col() +
+  scale_y_continuous(labels = scales::comma) + 
+  ggtitle("The Average Total Salaries in a unit")+  
+  theme_classic() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
+
+unit_total_mean_graph
+
+
+unit_total_max <- salary %>% 
+  aggregate(Total~Unit,FUN = max) %>% 
+  arrange(desc(Total)) %>% 
+  head(10)
+
+unit_total_max
+
+
+unit_total_max_graph <- unit_total_max %>% 
+  ggplot(aes(Unit,Total,fill = Unit)) +
+  geom_col() +
+  scale_y_continuous(labels = scales::comma)+ 
+  ggtitle("The Highest Total Salaries in a unit") +  
+  theme_classic() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
+
+
+unit_total_max_graph
+
+unit_total_min  <- salary %>%
+  aggregate(Total~Unit,FUN = min) %>%
+  arrange(Total) %>% head(10)
+
+unit_total_min
+
+unit_total_min_graph <- unit_total_min %>%
+  ggplot(aes(Unit,Total,fill = Unit)) + 
+  geom_col() +
+  scale_y_continuous(labels = scales::comma) + 
+  ggtitle("The Lowest Total Salaries in a unit") +  theme_classic() + 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
+
+
+unit_total_min_graph
+```
+***
+
+
+### Top Earning Employees
+```{r}
+employee_pay_max <-  salary %>% 
+  select(`First Name`,
+         Surname,
+         Department,
+         Unit,
+         Basic,
+         Total) %>% 
+  arrange(desc(Total)) %>% 
+  head(10)
+
+employee_pay_max
+```
+***
+
+
+### Low Earning Employees
+```{r}
+employee_pay_min <-  salary %>% 
+  select(`First Name`,
+         Surname,
+         Department,
+         Unit,
+         Basic,
+         Total) %>% 
+  arrange(Total) %>% 
+  head(10)
+
+employee_pay_min
+```
+***
+
+# Data Analysis Report
+
+## Analysis of Departmental Compensation
+
+### Introduction
+This report aims to analyze and derive insights from the compensation levels across various departments within the organization. The focus is on understanding the disparities in base salaries among departments and identifying patterns and trends in compensation distribution.
+
+### Summary of Findings
+Upon analyzing the base salary data, it is observed that most departments exhibit relatively high levels of compensation. The variations in base salaries across different departments are minimal, indicating a relatively equitable distribution of pay within the organization. However, there are some notable differences in the average base salaries among specific departments.
+
+### Detailed Findings
+1. *Average Base Salary Comparison*:
+   - The average base salary across the departments shows little variation, suggesting that the organization maintains a consistent pay structure.
+   - Departments such as *Internal Control* and *IT* have the lowest average base salaries. This finding highlights a potential area for review to ensure these departments are adequately compensated for their contributions.
+
+2. *Highest Average Base Salaries*:
+   - The *Dispatch* and *Quality Control* departments have the highest average base salaries. These departments may involve specialized skills or critical functions that justify higher compensation levels.
+
+3. *Difference Between Highest and Lowest Base Salaries*:
+   - The difference between the highest base salary and the average base salary is low but not as low as the lowest base salary. This indicates that while there is some variation, the overall spread of base salaries is kept within a reasonable range.
+
+4. *Unit-Level Salary Discrepancies*:
+   - Some units within their respective departments have very low salaries compared to the average salary in their units. This intra-departmental disparity suggests that certain roles or positions may not be compensated as competitively as others within the same department.
+
+### Conclusion
+In conclusion, the analysis indicates that there is a relatively equitable distribution of base compensation across the departments, with minor variations. The *Dispatch* and *Quality Control* departments lead with the highest average base salaries, while *Internal Control* and *IT* have the lowest. Additionally, it is noted that some units within departments experience significant salary discrepancies, which could affect employee satisfaction and retention.
+
+### Recommendations
+1. *Review Compensation for Lower Paid Departments and Units*:
+   - Conduct a further review of the compensation structure for the *Internal Control* and *IT* departments, as well as for units with significantly lower salaries within their respective departments, to ensure pay aligns with industry standards and internal equity.
+
+2. *Address Unit-Level Discrepancies*:
+   - Implement targeted adjustments for units with notably low salaries within their departments to reduce intra-departmental disparities and promote fairness.
+
+3. *Maintain Equity in Pay Structure*:
+   - Continue monitoring and adjusting the compensation policies to maintain a fair and equitable pay structure across all departments and units, ensuring all employees feel valued and adequately compensated for their work.
+
+This analysis serves as a foundational step in understanding and addressing compensation disparities within the organization, aiming to foster a fair and motivating work environment.
