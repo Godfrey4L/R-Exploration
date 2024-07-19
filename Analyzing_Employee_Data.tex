@@ -1,0 +1,1004 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Analyzing Employee Compensation and Benefits},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Analyzing Employee Compensation and Benefits}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{Load libraries and Data}\label{load-libraries-and-data}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+## v dplyr     1.1.4     v readr     2.1.5
+## v forcats   1.0.0     v stringr   1.5.1
+## v ggplot2   3.5.0     v tibble    3.2.1
+## v lubridate 1.9.3     v tidyr     1.3.1
+## v purrr     1.0.2     
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+## i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\NormalTok{salary }\OtherTok{\textless{}{-}}\NormalTok{ readxl}\SpecialCharTok{::}\FunctionTok{read\_xlsx}\NormalTok{(}\StringTok{\textquotesingle{}Data Analytics DataSet.xlsx\textquotesingle{}}\NormalTok{)}
+\NormalTok{salary}\OtherTok{\textless{}{-}}\NormalTok{salary }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{compensation =}\NormalTok{ Total}\SpecialCharTok{{-}}\NormalTok{Basic)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{The Banks used by our
+Employees}\label{the-banks-used-by-our-employees}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{banks }\OtherTok{\textless{}{-}}\NormalTok{ salary }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(Bank) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{distinct}\NormalTok{()}
+
+\NormalTok{banks}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 1
+##   Bank                
+##   <chr>               
+## 1 Sub-Standard Bank   
+## 2 Distressed Bank     
+## 3 Oasis Bank          
+## 4 Money Doublers' Bank
+## 5 Atlantic Bank       
+## 6 Last Bank Of Nigeria
+\end{verbatim}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{The Total number of Personnels in each
+department}\label{the-total-number-of-personnels-in-each-department}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dept }\OtherTok{\textless{}{-}}\NormalTok{ salary }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(Department) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(Department) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Total =}\FunctionTok{n}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{distinct}\NormalTok{()}
+
+\NormalTok{dept}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10 x 2
+## # Groups:   Department [10]
+##    Department       Total
+##    <chr>            <int>
+##  1 Finance            172
+##  2 Human Resources    220
+##  3 Admin.             140
+##  4 Internal Control    66
+##  5 IT                  69
+##  6 R&D                 66
+##  7 Dispatch            66
+##  8 Production          66
+##  9 Customer Service    69
+## 10 Quality Control     66
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dept\_graph }\OtherTok{\textless{}{-}}\NormalTok{ dept }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Department,Total, }\AttributeTok{fill =}\NormalTok{ Department)) }\SpecialCharTok{+} \FunctionTok{geom\_col}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{theme\_classic}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Total Personnel "}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position =} \StringTok{"none"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =}\NormalTok{ Total), }
+            \AttributeTok{position =} \FunctionTok{position\_stack}\NormalTok{(}\AttributeTok{vjust =} \FloatTok{0.5}\NormalTok{),}
+            \AttributeTok{color =}\StringTok{"black"}\NormalTok{, }\AttributeTok{size =} \DecValTok{3}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{coord\_flip}\NormalTok{()}
+
+\NormalTok{dept\_graph}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Analyzing_Employee_Data_files/figure-latex/unnamed-chunk-4-1.pdf}
+***
+
+\subsubsection{Average Compensation per
+department}\label{average-compensation-per-department}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Compensation\_dept }\OtherTok{\textless{}{-}}\NormalTok{ salary }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{aggregate}\NormalTok{(compensation}\SpecialCharTok{\textasciitilde{}}\NormalTok{Department, }\AttributeTok{FUN =}\NormalTok{ mean)}\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{arrange}\NormalTok{(compensation) }
+
+\NormalTok{Compensation\_dept}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          Department compensation
+## 1  Internal Control     558930.9
+## 2                IT     582182.0
+## 3               R&D     583974.6
+## 4        Production     601887.4
+## 5            Admin.     615944.5
+## 6   Human Resources     628634.4
+## 7           Finance     629670.1
+## 8  Customer Service     638422.4
+## 9   Quality Control     640704.0
+## 10         Dispatch     659166.4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Compensation\_dept\_graph }\OtherTok{\textless{}{-}}\NormalTok{ Compensation\_dept }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Department,compensation, }\AttributeTok{fill =}\NormalTok{ Department)) }\SpecialCharTok{+} \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{\textquotesingle{}identity\textquotesingle{}}\NormalTok{)  }\SpecialCharTok{+} 
+  \FunctionTok{theme\_classic}\NormalTok{() }\SpecialCharTok{+}  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Average Compensation per department"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{90}\NormalTok{, }\AttributeTok{vjust =} \FloatTok{0.5}\NormalTok{))}
+
+
+
+\NormalTok{Compensation\_dept\_graph}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Analyzing_Employee_Data_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{banks\_pay }\OtherTok{\textless{}{-}}\NormalTok{ salary }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{aggregate}\NormalTok{(Total}\SpecialCharTok{\textasciitilde{}}\NormalTok{Bank,}
+            \AttributeTok{FUN =} \StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{banks\_pay}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                   Bank   Total
+## 1        Atlantic Bank 2859539
+## 2      Distressed Bank 3161746
+## 3 Last Bank Of Nigeria 3143976
+## 4 Money Doublers' Bank 3272898
+## 5           Oasis Bank 3108603
+## 6    Sub-Standard Bank 3222421
+\end{verbatim}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{The Average, Highest and Lowest Total Salaries earned in
+a
+department.}\label{the-average-highest-and-lowest-total-salaries-earned-in-a-department.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dept\_pay\_mean }\OtherTok{\textless{}{-}}\NormalTok{ salary }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{aggregate}\NormalTok{(Total }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Department,}
+            \AttributeTok{FUN =}\NormalTok{ mean) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{arrange}\NormalTok{(Total) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{head}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+
+
+\NormalTok{dept\_pay\_mean\_graph }\OtherTok{\textless{}{-}} 
+\NormalTok{  dept\_pay\_mean }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Department,}
+\NormalTok{             Total,}
+             \AttributeTok{fill =}\NormalTok{ Department)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{\textquotesingle{}identity\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\NormalTok{comma) }\SpecialCharTok{+} 
+  \FunctionTok{theme\_classic}\NormalTok{() }\SpecialCharTok{+} 
+ \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Average Total Salaries in a department"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{90}\NormalTok{, }\AttributeTok{vjust =} \FloatTok{0.5}\NormalTok{))}
+
+
+\NormalTok{dept\_pay\_mean\_graph}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Analyzing_Employee_Data_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dept\_pay\_max }\OtherTok{\textless{}{-}}\NormalTok{ salary }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{aggregate}\NormalTok{(Total }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Department,}
+            \AttributeTok{FUN =}\NormalTok{ max) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(Total)) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{head}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+
+\NormalTok{dept\_pay\_max}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          Department   Total
+## 1  Customer Service 6001580
+## 2  Internal Control 5998834
+## 3            Admin. 5969220
+## 4          Dispatch 5969002
+## 5           Finance 5957610
+## 6               R&D 5933632
+## 7   Human Resources 5927426
+## 8   Quality Control 5911278
+## 9                IT 5830206
+## 10       Production 5816035
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dept\_graph\_max }\OtherTok{\textless{}{-}}\NormalTok{ dept\_pay\_max }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Department,}
+\NormalTok{             Total,}
+             \AttributeTok{fill =}\NormalTok{ Department)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{\textquotesingle{}identity\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\NormalTok{comma) }\SpecialCharTok{+} 
+  \FunctionTok{theme\_classic}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Highest Total Salaries in a department"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{90}\NormalTok{, }\AttributeTok{vjust =} \FloatTok{0.5}\NormalTok{))}
+
+\NormalTok{dept\_graph\_max}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Analyzing_Employee_Data_files/figure-latex/unnamed-chunk-7-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dept\_pay\_min }\OtherTok{\textless{}{-}}\NormalTok{ salary }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{aggregate}\NormalTok{(Total }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Department,}
+            \AttributeTok{FUN =}\NormalTok{ max) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(Total) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{head}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+
+\NormalTok{dept\_graph\_min }\OtherTok{\textless{}{-}}\NormalTok{ dept\_pay\_min }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Department,}
+\NormalTok{             Total,}
+             \AttributeTok{fill =}\NormalTok{ Department)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_col}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{theme\_classic}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Lowest Total Salaries in a department"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\NormalTok{comma) }\SpecialCharTok{+} 
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{90}\NormalTok{, }\AttributeTok{vjust =} \FloatTok{0.5}\NormalTok{))}
+
+
+\NormalTok{dept\_pay\_min}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          Department   Total
+## 1        Production 5816035
+## 2                IT 5830206
+## 3   Quality Control 5911278
+## 4   Human Resources 5927426
+## 5               R&D 5933632
+## 6           Finance 5957610
+## 7          Dispatch 5969002
+## 8            Admin. 5969220
+## 9  Internal Control 5998834
+## 10 Customer Service 6001580
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dept\_graph\_min }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Analyzing_Employee_Data_files/figure-latex/unnamed-chunk-7-3.pdf}
+***
+
+\subsubsection{The Average, Highest and Lowest Basic Salaries earned in
+a
+department}\label{the-average-highest-and-lowest-basic-salaries-earned-in-a-department}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dept\_basic }\OtherTok{\textless{}{-}}\NormalTok{ salary }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{aggregate}\NormalTok{(Basic}\SpecialCharTok{\textasciitilde{}}\NormalTok{ Department,}
+            \AttributeTok{FUN =}\NormalTok{ mean) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(Basic)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{head}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+
+\NormalTok{dept\_basic}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          Department   Basic
+## 1          Dispatch 2751243
+## 2   Quality Control 2640024
+## 3  Customer Service 2626280
+## 4           Finance 2573555
+## 5   Human Resources 2567316
+## 6            Admin. 2477347
+## 7        Production 2406189
+## 8               R&D 2298281
+## 9                IT 2287482
+## 10 Internal Control 2147415
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dept\_basic\_graph }\OtherTok{\textless{}{-}}\NormalTok{ dept\_basic}\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Department,}
+\NormalTok{             Basic,}
+             \AttributeTok{fill =}\NormalTok{ Department)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_col}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\NormalTok{comma)  }\SpecialCharTok{+} 
+  \FunctionTok{theme\_classic}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Average Basic Salaries in a department"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{90}\NormalTok{, }\AttributeTok{vjust =} \FloatTok{0.5}\NormalTok{))}
+
+\NormalTok{dept\_basic\_graph}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Analyzing_Employee_Data_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dept\_basic\_max }\OtherTok{\textless{}{-}}\NormalTok{ salary }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{aggregate}\NormalTok{(Basic}\SpecialCharTok{\textasciitilde{}}\NormalTok{ Department,}
+            \AttributeTok{FUN =}\NormalTok{ max) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(Basic)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{head}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+  
+
+
+\NormalTok{dept\_basic\_max\_graph}\OtherTok{\textless{}{-}}\NormalTok{dept\_basic\_max }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Department,Basic,}\AttributeTok{fill =}\NormalTok{ Department)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_col}\NormalTok{() }\SpecialCharTok{+}\FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\NormalTok{comma)}\SpecialCharTok{+} 
+  \FunctionTok{theme\_classic}\NormalTok{()  }\SpecialCharTok{+} 
+  \FunctionTok{theme\_classic}\NormalTok{()  }\SpecialCharTok{+} 
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Highest Basic Salaries in a department"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{90}\NormalTok{, }\AttributeTok{vjust =} \FloatTok{0.5}\NormalTok{))}
+
+
+\NormalTok{dept\_basic\_max\_graph}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Analyzing_Employee_Data_files/figure-latex/unnamed-chunk-8-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dept\_basic\_min }\OtherTok{\textless{}{-}}\NormalTok{  salary }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{aggregate}\NormalTok{(Basic}\SpecialCharTok{\textasciitilde{}}\NormalTok{ Department,}
+            \AttributeTok{FUN =}\NormalTok{ min) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{arrange}\NormalTok{(Basic) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{head}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+  
+
+
+\NormalTok{dept\_basic\_min}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          Department     Basic
+## 1            Admin.  58975.77
+## 2   Human Resources 104316.00
+## 3  Internal Control 104608.00
+## 4               R&D 105180.00
+## 5           Finance 124539.00
+## 6  Customer Service 127102.00
+## 7   Quality Control 127431.00
+## 8                IT 132878.00
+## 9        Production 149773.00
+## 10         Dispatch 194232.00
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dept\_basic\_min\_graph }\OtherTok{\textless{}{-}}\NormalTok{ dept\_basic\_min }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Department,Basic,}\AttributeTok{fill =}\NormalTok{ Department)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_col}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\NormalTok{comma)}\SpecialCharTok{+} 
+  \FunctionTok{theme\_classic}\NormalTok{()}\SpecialCharTok{+}  
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Lowest Basic Salaries in a department"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{90}\NormalTok{, }\AttributeTok{vjust =} \FloatTok{0.5}\NormalTok{))}
+
+
+\NormalTok{dept\_basic\_min\_graph}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Analyzing_Employee_Data_files/figure-latex/unnamed-chunk-8-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{t.test}\NormalTok{(salary}\SpecialCharTok{$}\NormalTok{compensation,}\AttributeTok{data =}\NormalTok{ salary)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  One Sample t-test
+## 
+## data:  salary$compensation
+## t = 83.304, df = 999, p-value < 2.2e-16
+## alternative hypothesis: true mean is not equal to 0
+## 95 percent confidence interval:
+##  603446.5 632562.6
+## sample estimates:
+## mean of x 
+##  618004.5
+\end{verbatim}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{The Average, Highest and Lowest Basic Salaries earned in
+their respective
+Units}\label{the-average-highest-and-lowest-basic-salaries-earned-in-their-respective-units}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{unit\_basic\_mean }\OtherTok{\textless{}{-}}\NormalTok{ salary }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{aggregate}\NormalTok{(Basic}\SpecialCharTok{\textasciitilde{}}\NormalTok{Unit,}\AttributeTok{FUN =}\NormalTok{ mean) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(Basic) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{head}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+
+
+\NormalTok{unit\_basic\_mean}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                            Unit   Basic
+## 1                 Fraud Control 2094968
+## 2                    Compliance 2136500
+## 3                      Analysis 2147172
+## 4               Desktop Support 2148568
+## 5               Risk Management 2210777
+## 6  Business Application Support 2222960
+## 7              Technical Design 2261071
+## 8                      Planning 2277068
+## 9                  Social Media 2290914
+## 10       Planning & Development 2349087
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{unit\_basic\_mean\_graph }\OtherTok{\textless{}{-}}\NormalTok{ unit\_basic\_mean }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Unit,Basic,}\AttributeTok{fill =}\NormalTok{ Unit)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_col}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\NormalTok{comma)  }\SpecialCharTok{+} 
+  \FunctionTok{theme\_classic}\NormalTok{()}\SpecialCharTok{+} 
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Average Basic Salaries in a unit"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{90}\NormalTok{, }\AttributeTok{vjust =} \FloatTok{0.5}\NormalTok{))}
+
+
+
+\NormalTok{unit\_basic\_mean\_graph}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Analyzing_Employee_Data_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{unit\_basic\_max }\OtherTok{\textless{}{-}}\NormalTok{ salary }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{aggregate}\NormalTok{(Basic}\SpecialCharTok{\textasciitilde{}}\NormalTok{Unit,}\AttributeTok{FUN =}\NormalTok{ max) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(Basic)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{head}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+
+
+\NormalTok{unit\_basic\_max}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                Unit   Basic
+## 1      Social Media 4973516
+## 2   Risk Management 4971161
+## 3       Call Center 4963737
+## 4          Supplies 4945763
+## 5           Courier 4945576
+## 6         Budgeting 4935806
+## 7     Fraud Control 4921564
+## 8  Account Payables 4917072
+## 9       MD's Office 4915905
+## 10           Design 4915242
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{unit\_basic\_max\_graph }\OtherTok{\textless{}{-}}\NormalTok{ unit\_basic\_max}\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Unit,Basic,}\AttributeTok{fill =}\NormalTok{ Unit)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_col}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\NormalTok{comma)  }\SpecialCharTok{+} 
+  \FunctionTok{theme\_classic}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Highest Basic Salaries in a unit"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{90}\NormalTok{, }\AttributeTok{vjust =} \FloatTok{0.5}\NormalTok{))}
+
+
+\NormalTok{unit\_basic\_max\_graph}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Analyzing_Employee_Data_files/figure-latex/unnamed-chunk-9-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{unit\_basic\_min  }\OtherTok{\textless{}{-}}\NormalTok{ salary }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{aggregate}\NormalTok{(Basic}\SpecialCharTok{\textasciitilde{}}\NormalTok{Unit,}\AttributeTok{FUN =}\NormalTok{ min) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{arrange}\NormalTok{(Basic) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{head}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+ 
+
+\NormalTok{unit\_basic\_min}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                      Unit     Basic
+## 1             Expenditure  58975.77
+## 2                 Payroll 104316.00
+## 3              Compliance 104608.00
+## 4                  Design 105180.00
+## 5  Training & Development 105295.00
+## 6     Account Receivables 124539.00
+## 7            Social Media 127102.00
+## 8                Training 127431.00
+## 9               Budgeting 128826.00
+## 10        Desktop Support 132878.00
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ unit\_basic\_min\_graph }\OtherTok{\textless{}{-}}\NormalTok{ unit\_basic\_min}\SpecialCharTok{\%\textgreater{}\%}
+   \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Unit,Basic,}\AttributeTok{fill =}\NormalTok{ Unit)) }\SpecialCharTok{+} 
+   \FunctionTok{geom\_col}\NormalTok{() }\SpecialCharTok{+}\FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\NormalTok{comma)  }\SpecialCharTok{+} 
+   \FunctionTok{theme\_classic}\NormalTok{() }\SpecialCharTok{+} 
+   \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Lowest Basic Salaries in a unit"}\NormalTok{) }\SpecialCharTok{+} 
+   \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{90}\NormalTok{, }\AttributeTok{vjust =} \FloatTok{0.5}\NormalTok{))}
+
+
+\NormalTok{ unit\_basic\_min\_graph}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Analyzing_Employee_Data_files/figure-latex/unnamed-chunk-9-3.pdf}
+***
+
+\subsubsection{The Average, Highest and Lowest Total Salaries earned in
+their
+Units}\label{the-average-highest-and-lowest-total-salaries-earned-in-their-units}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{unit\_total\_mean }\OtherTok{\textless{}{-}}\NormalTok{ salary }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{aggregate}\NormalTok{(Total}\SpecialCharTok{\textasciitilde{}}\NormalTok{Unit,}\AttributeTok{FUN =}\NormalTok{ mean) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{arrange}\NormalTok{(Total) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{head}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+
+\NormalTok{unit\_total\_mean}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                            Unit   Total
+## 1                 Fraud Control 2645192
+## 2                    Compliance 2693619
+## 3                      Analysis 2706063
+## 4               Desktop Support 2707690
+## 5               Risk Management 2780226
+## 6  Business Application Support 2794432
+## 7              Technical Design 2838869
+## 8                      Planning 2857522
+## 9                  Social Media 2873666
+## 10       Planning & Development 2941495
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{unit\_total\_mean\_graph }\OtherTok{\textless{}{-}}\NormalTok{ unit\_total\_mean }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Unit,Total,}\AttributeTok{fill =}\NormalTok{ Unit)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_col}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\NormalTok{comma) }\SpecialCharTok{+} 
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"The Average Total Salaries in a unit"}\NormalTok{)}\SpecialCharTok{+}  
+  \FunctionTok{theme\_classic}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{90}\NormalTok{, }\AttributeTok{vjust =} \FloatTok{0.5}\NormalTok{))}
+
+\NormalTok{unit\_total\_mean\_graph}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Analyzing_Employee_Data_files/figure-latex/unnamed-chunk-10-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{unit\_total\_max }\OtherTok{\textless{}{-}}\NormalTok{ salary }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{aggregate}\NormalTok{(Total}\SpecialCharTok{\textasciitilde{}}\NormalTok{Unit,}\AttributeTok{FUN =}\NormalTok{ max) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(Total)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{head}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+
+\NormalTok{unit\_total\_max}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                Unit   Total
+## 1      Social Media 6001580
+## 2   Risk Management 5998834
+## 3       Call Center 5990177
+## 4          Supplies 5969220
+## 5           Courier 5969002
+## 6         Budgeting 5957610
+## 7     Fraud Control 5941004
+## 8  Account Payables 5935766
+## 9       MD's Office 5934405
+## 10           Design 5933632
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{unit\_total\_max\_graph }\OtherTok{\textless{}{-}}\NormalTok{ unit\_total\_max }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Unit,Total,}\AttributeTok{fill =}\NormalTok{ Unit)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_col}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\NormalTok{comma)}\SpecialCharTok{+} 
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"The Highest Total Salaries in a unit"}\NormalTok{) }\SpecialCharTok{+}  
+  \FunctionTok{theme\_classic}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{90}\NormalTok{, }\AttributeTok{vjust =} \FloatTok{0.5}\NormalTok{))}
+
+
+\NormalTok{unit\_total\_max\_graph}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Analyzing_Employee_Data_files/figure-latex/unnamed-chunk-10-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{unit\_total\_min  }\OtherTok{\textless{}{-}}\NormalTok{ salary }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{aggregate}\NormalTok{(Total}\SpecialCharTok{\textasciitilde{}}\NormalTok{Unit,}\AttributeTok{FUN =}\NormalTok{ min) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(Total) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{head}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+
+\NormalTok{unit\_total\_min}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                      Unit    Total
+## 1             Expenditure 260788.0
+## 2                 Payroll 324092.5
+## 3              Compliance 324432.9
+## 4                  Design 325099.9
+## 5  Training & Development 325234.0
+## 6     Account Receivables 347672.5
+## 7            Social Media 350660.9
+## 8                Training 351044.5
+## 9               Budgeting 352671.1
+## 10        Desktop Support 357395.7
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{unit\_total\_min\_graph }\OtherTok{\textless{}{-}}\NormalTok{ unit\_total\_min }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Unit,Total,}\AttributeTok{fill =}\NormalTok{ Unit)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_col}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\NormalTok{comma) }\SpecialCharTok{+} 
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"The Lowest Total Salaries in a unit"}\NormalTok{) }\SpecialCharTok{+}  \FunctionTok{theme\_classic}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{90}\NormalTok{, }\AttributeTok{vjust =} \FloatTok{0.5}\NormalTok{))}
+
+
+\NormalTok{unit\_total\_min\_graph}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Analyzing_Employee_Data_files/figure-latex/unnamed-chunk-10-3.pdf}
+***
+
+\subsubsection{Top Earning Employees}\label{top-earning-employees}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{employee\_pay\_max }\OtherTok{\textless{}{-}}\NormalTok{  salary }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{First Name}\StringTok{\textasciigrave{}}\NormalTok{,}
+\NormalTok{         Surname,}
+\NormalTok{         Department,}
+\NormalTok{         Unit,}
+\NormalTok{         Basic,}
+\NormalTok{         Total) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(Total)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{head}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+
+\NormalTok{employee\_pay\_max}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10 x 6
+##    `First Name`  Surname         Department       Unit              Basic  Total
+##    <chr>         <chr>           <chr>            <chr>             <dbl>  <dbl>
+##  1 Oluwafolakemi Ademola         Customer Service Social Media     4.97e6 6.00e6
+##  2 Francis       Babalola        Internal Control Risk Management  4.97e6 6.00e6
+##  3 Chidozie      Adeko           Customer Service Call Center      4.96e6 5.99e6
+##  4 Umoh          Umoh            Admin.           Supplies         4.95e6 5.97e6
+##  5 Ago           Ago             Dispatch         Courier          4.95e6 5.97e6
+##  6 Ijisesan      Godwin          Customer Service Call Center      4.94e6 5.96e6
+##  7 James         Ubong           Finance          Budgeting        4.94e6 5.96e6
+##  8 Chiamaka      Okhiona         Internal Control Fraud Control    4.92e6 5.94e6
+##  9 Chigozie      Lemmy-Johnson   Finance          Account Payables 4.92e6 5.94e6
+## 10 Shahidul      Dibosa-Osadolor Admin.           MD's Office      4.92e6 5.93e6
+\end{verbatim}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{Low Earning Employees}\label{low-earning-employees}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{employee\_pay\_min }\OtherTok{\textless{}{-}}\NormalTok{  salary }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{First Name}\StringTok{\textasciigrave{}}\NormalTok{,}
+\NormalTok{         Surname,}
+\NormalTok{         Department,}
+\NormalTok{         Unit,}
+\NormalTok{         Basic,}
+\NormalTok{         Total) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{arrange}\NormalTok{(Total) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{head}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+
+\NormalTok{employee\_pay\_min}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10 x 6
+##    `First Name` Surname   Department       Unit                     Basic  Total
+##    <chr>        <chr>     <chr>            <chr>                    <dbl>  <dbl>
+##  1 Nwelih       Thompson  Admin.           Expenditure             58976. 2.61e5
+##  2 Omoyeni      Rosemary  Human Resources  Payroll                104316  3.24e5
+##  3 Babatunde    Bisah     Internal Control Compliance             104608  3.24e5
+##  4 Danjuma      Ogbuefi   R&D              Design                 105180  3.25e5
+##  5 Chidi        Izevbigie Human Resources  Training & Development 105295  3.25e5
+##  6 Busari       Ewuola    Finance          Account Receivables    124539  3.48e5
+##  7 Mary         Ado       Customer Service Social Media           127102  3.51e5
+##  8 Oluseun      Afolayan  Quality Control  Training               127431  3.51e5
+##  9 Ernest       Usen      Finance          Budgeting              128826  3.53e5
+## 10 Stanley      Coker     IT               Desktop Support        132878  3.57e5
+\end{verbatim}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Data Analysis Report}\label{data-analysis-report}
+
+\subsection{Analysis of Departmental
+Compensation}\label{analysis-of-departmental-compensation}
+
+\subsubsection{Introduction}\label{introduction}
+
+This report aims to analyze and derive insights from the compensation
+levels across various departments within the organization. The focus is
+on understanding the disparities in base salaries among departments and
+identifying patterns and trends in compensation distribution.
+
+\subsubsection{Summary of Findings}\label{summary-of-findings}
+
+Upon analyzing the base salary data, it is observed that most
+departments exhibit relatively high levels of compensation. The
+variations in base salaries across different departments are minimal,
+indicating a relatively equitable distribution of pay within the
+organization. However, there are some notable differences in the average
+base salaries among specific departments.
+
+\subsubsection{Detailed Findings}\label{detailed-findings}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \emph{Average Base Salary Comparison}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The average base salary across the departments shows little
+    variation, suggesting that the organization maintains a consistent
+    pay structure.
+  \item
+    Departments such as \emph{Internal Control} and \emph{IT} have the
+    lowest average base salaries. This finding highlights a potential
+    area for review to ensure these departments are adequately
+    compensated for their contributions.
+  \end{itemize}
+\item
+  \emph{Highest Average Base Salaries}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The \emph{Dispatch} and \emph{Quality Control} departments have the
+    highest average base salaries. These departments may involve
+    specialized skills or critical functions that justify higher
+    compensation levels.
+  \end{itemize}
+\item
+  \emph{Difference Between Highest and Lowest Base Salaries}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The difference between the highest base salary and the average base
+    salary is low but not as low as the lowest base salary. This
+    indicates that while there is some variation, the overall spread of
+    base salaries is kept within a reasonable range.
+  \end{itemize}
+\item
+  \emph{Unit-Level Salary Discrepancies}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Some units within their respective departments have very low
+    salaries compared to the average salary in their units. This
+    intra-departmental disparity suggests that certain roles or
+    positions may not be compensated as competitively as others within
+    the same department.
+  \end{itemize}
+\end{enumerate}
+
+\subsubsection{Conclusion}\label{conclusion}
+
+In conclusion, the analysis indicates that there is a relatively
+equitable distribution of base compensation across the departments, with
+minor variations. The \emph{Dispatch} and \emph{Quality Control}
+departments lead with the highest average base salaries, while
+\emph{Internal Control} and \emph{IT} have the lowest. Additionally, it
+is noted that some units within departments experience significant
+salary discrepancies, which could affect employee satisfaction and
+retention.
+
+\subsubsection{Recommendations}\label{recommendations}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \emph{Review Compensation for Lower Paid Departments and Units}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Conduct a further review of the compensation structure for the
+    \emph{Internal Control} and \emph{IT} departments, as well as for
+    units with significantly lower salaries within their respective
+    departments, to ensure pay aligns with industry standards and
+    internal equity.
+  \end{itemize}
+\item
+  \emph{Address Unit-Level Discrepancies}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Implement targeted adjustments for units with notably low salaries
+    within their departments to reduce intra-departmental disparities
+    and promote fairness.
+  \end{itemize}
+\item
+  \emph{Maintain Equity in Pay Structure}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Continue monitoring and adjusting the compensation policies to
+    maintain a fair and equitable pay structure across all departments
+    and units, ensuring all employees feel valued and adequately
+    compensated for their work.
+  \end{itemize}
+\end{enumerate}
+
+This analysis serves as a foundational step in understanding and
+addressing compensation disparities within the organization, aiming to
+foster a fair and motivating work environment.
+
+\end{document}
